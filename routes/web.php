@@ -10,6 +10,10 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('index');
+    // $value = session()->all();
+    // echo "<pre>";
+    // print_r($value);
+    // echo "</pre>";
 })->name('index');
 
 
