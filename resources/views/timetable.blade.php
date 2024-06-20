@@ -2,21 +2,21 @@
 
 @section('content')
 
-    <div class="container">
-        <div class="container row">
-            <div>
-                <span>Student Id: {{ session()->get('user.student_id') }}</span>
+    <div class="container mt-4">
+        <div class="row mb-3">
+            <div class="col">
+                <span><strong>Student ID:</strong> {{ session()->get('student_id') }}</span>
             </div>
-            <div>
-                <span>Student Name: {{ session()->get('user.name') }}</span>
+            <div class="col">
+                <span><strong>Student Name:</strong> {{ session()->get('name') }}</span>
             </div>
         </div>
-        <div class="container row">
-            <div>
-                <span>Standard: </span>
+        <div class="row">
+            <div class="col">
+                <span><strong>Standard:</strong> {{ session()->get('std') }}</span>
             </div>
-            <div>
-                <span>Division: </span>
+            <div class="col">
+                <span><strong>Division:</strong> {{ session()->get('dv') }}</span>
             </div>
         </div>
     </div>
@@ -34,32 +34,16 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach($timetable as $time) --}}
-                <tr>
-                    <td>123</td>
-                    <td>123</td>
-                    <td>123</td>
-                    <td>123</td>
-                    <td>123</td>
-                </tr>
-                <tr>
-                    <td>123</td>
-                    <td>123</td>
-                    <td>123</td>
-                    <td>123</td>
-                    <td>123</td>
-                </tr>
-                <tr>
-                    <td>123</td>
-                    <td>123</td>
-                    <td>123</td>
-                    <td>123</td>
-                    <td>123</td>
-                </tr>
-                {{-- @endforeach --}}
+                @foreach ($timetable as $time)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td> <!-- Incrementing serial number -->
+                        <td>{{ $time->period }}</td>
+                        <td>{{ $time->day }}</td>
+                        <td>{{ $time->sname }}</td>
+                        <td>{{ $time->teacher_name }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
-
-
 @endsection
