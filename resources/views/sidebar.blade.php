@@ -7,7 +7,7 @@
                 <div class="main-menu-header">
                     <img class="img-radius" src="{{ asset('images/avatar.png') }}" alt="User-Profile-Image">
                     <div class="user-details">
-                        <span>{{ session()->get('user.name') }}</span>
+                        <span>{{ session()->get('name') }}</span>
                     </div>
                 </div>
             </div>
