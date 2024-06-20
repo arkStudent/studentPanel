@@ -130,8 +130,8 @@
                         <div class="dropdown-menu dropdown-menu-right profile-notification">
                             <div class="pro-head">
                                 <center>
-                                    <span>Name: {{ session('user.name') }}</span><br>
-                                    <span>ID: {{ session('user.student_id') }}</span>
+                                    <span>Name: {{ session('name') }}</span><br>
+                                    <span>ID: {{ session('student_id') }}</span>
                                 </center>
                             </div>
                             <ul class="pro-body">

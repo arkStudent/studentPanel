@@ -1,9 +1,9 @@
 @extends('index')
 
 @section('content')
-    <div class="container" >
+    <div class="container">
         <h5 class="text-center">ATTENDANCE</h5>
-        <form id="attendForm">            
+        <form id="attendForm">
             <div class="mb-3">
                 <label for="fdate" class="form-label">From Date</label>
                 <input type="date" class="form-control" id="fdate" name="fdate" aria-describedby="emailHelp">
@@ -29,42 +29,46 @@
             });
 
             //send api request to get data
-            document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('attendForm');
+            document.addEventListener('DOMContentLoaded', function() {
+                const form = document.getElementById('attendForm');
 
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
 
-                const fdate = document.getElementById('fdate').value;
-                const tdate = document.getElementById('tdate').value;
+                    const fdate = document.getElementById('fdate').value;
+                    const tdate = document.getElementById('tdate').value;
 
-                fetch('/api/attendDetails', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                    },
-                    body: JSON.stringify({ email, password, password_confirmation })
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        return response.json().then(errorData => {
-                            throw errorData;
+                    fetch('/api/attendDetails', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': document.querySelector(
+                                    'meta[name="csrf-token"]').getAttribute('content')
+                            },
+                            body: JSON.stringify({
+                                fdate,
+                                tdate
+                            })
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                return response.json().then(errorData => {
+                                    throw errorData;
+                                });
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            alert('Registered successfully');
+                            location.reload();
+                        })
+                        .catch(error => {
+                            const errorMessage = Object.values(error).flat().join('\n');
+                            alert(errorMessage);
+                            location.reload();
                         });
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    alert('Registered successfully');
-                    location.reload();
-                })
-                .catch(error => {
-                    const errorMessage = Object.values(error).flat().join('\n');
-                    alert(errorMessage);
-                    location.reload();
                 });
             });
-        });
 
         });
     </script>
