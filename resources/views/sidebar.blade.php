@@ -7,7 +7,7 @@
                 <div class="main-menu-header">
                     <img class="img-radius" src="{{ asset('images/avatar.png') }}" alt="User-Profile-Image">
                     <div class="user-details">
-                        <span>{{ session()->get('name') }}</span>
+                        <span>{{ session()->get('user.name') }}</span>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                     <ul class="pcoded-submenu">
                         <li><a href="{{ route('attend.index') }}" target="_self"><i
                                     class="bi bi-arrow-right items"></i>Attendance</a></li>
-                        <li><a href="{{ route('login') }}" target="_self"><i class="bi bi-arrow-right items"></i>Time
+                        <li><a href="{{ route('timetable.index') }}" target="_self"><i class="bi bi-arrow-right items"></i>Time
                                 Table</a></li>
                         <li><a href="{{ route('signin') }}" target="_self"><i class="bi bi-arrow-right items"></i>Lesson
                                 Plan</a></li>
