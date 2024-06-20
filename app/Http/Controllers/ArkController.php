@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Validator;
 
 class ArkController extends Controller
 {
+
+    public function index(){
+        return view('timetable');
+    }
+
     public function login(Request $request)
     {
         $validatedData = Validator::make($request->all(), [
