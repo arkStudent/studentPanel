@@ -9,8 +9,17 @@ use Illuminate\Support\Facades\Validator;
 class ArkController extends Controller
 {
 
-    public function index(){
-        return view('timetable');
+    public function index()
+    {
+        $standard = session()->get('std');
+        $division = session()->get('dv');
+
+        $timetable = DB::table('ark_timetable')
+                    ->where('standard', $standard)
+                    ->where('dv', $division)
+                    ->get();
+
+        return view('timetable', compact('timetable'));
     }
 
     public function login(Request $request)
@@ -36,6 +45,7 @@ class ArkController extends Controller
             if ($data['password'] === $user->password) {
 
                 session(['student_id' => $user->student_id, 'name' => $user->name]); 
+
                 // Retrieve additional data from ark_students table
                 $additionalData = DB::table('ark_students')
                     ->where('student_id', $data['student_id'])
