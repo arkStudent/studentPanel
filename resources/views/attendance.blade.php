@@ -19,7 +19,6 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        // jQuery script to set minimum date for 'To Date' based on 'From Date'
         $(document).ready(function() {
 
             //from and to date change code
@@ -29,47 +28,33 @@
             });
 
             //send api request to get data
-            document.addEventListener('DOMContentLoaded', function() {
-                const form = document.getElementById('attendForm');
+            $('#attendForm').on('submit', function(e) {
+                e.preventDefault();
 
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
+                const fdate = $('#fdate').val();
+                const tdate = $('#tdate').val();
 
-                    const fdate = document.getElementById('fdate').value;
-                    const tdate = document.getElementById('tdate').value;
-
-                    fetch('/api/attendDetails', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': document.querySelector(
-                                    'meta[name="csrf-token"]').getAttribute('content')
-                            },
-                            body: JSON.stringify({
-                                fdate,
-                                tdate
-                            })
-                        })
-                        .then(response => {
-                            if (!response.ok) {
-                                return response.json().then(errorData => {
-                                    throw errorData;
-                                });
-                            }
-                            return response.json();
-                        })
-                        .then(data => {
-                            alert('Registered successfully');
-                            location.reload();
-                        })
-                        .catch(error => {
-                            const errorMessage = Object.values(error).flat().join('\n');
-                            alert(errorMessage);
-                            location.reload();
-                        });
+                fetch('/api/attendTable', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    body: JSON.stringify({
+                        fdate,
+                        tdate
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Data fetched successfully');
+                    console.log(data);  // handle the data as needed
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred');
                 });
             });
-
         });
     </script>
 @endsection
