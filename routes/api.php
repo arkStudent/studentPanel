@@ -17,8 +17,8 @@ Route::middleware(['web'])->group(function () {
         $request->session()->flush();
         return redirect()->route('login');
     })->name('logout');
+
     Route::get('/attendForm', [AttendController::class, 'index'])->name('attend.index');
-    Route::post('/attendTable', [AttendController::class, 'showAttendance'])->name('attend.table');
     Route::get('/timeTable', [ArkController::class, 'index'])->name('timetable.index');
     
 });
