@@ -9,15 +9,12 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-
-
-
-
 // Route::post('/login', [ArkController::class, 'login'])->name('login');
 Route::middleware(['web'])->group(function () {
     Route::post('/login', [ArkController::class, 'login'])->name('login');
-    //Lubna called routes start
     Route::get('/attendForm', [AttendController::class, 'index'])->name('attend.index');
-    Route::post('/attendTable', [AttendanceController::class, 'showAttendance']);
+    Route::post('/attendTable', [AttendanceController::class, 'showAttendance'])->name('attend.table');
+    Route::get('/timeTable', [ArkController::class, 'index'])->name('timetable.index');
     
 });
+
