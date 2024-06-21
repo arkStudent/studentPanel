@@ -13,7 +13,7 @@ Route::get('/user', function (Request $request) {
 Route::middleware(['web'])->group(function () {
     Route::post('/login', [ArkController::class, 'login'])->name('login');
     Route::get('/attendForm', [AttendController::class, 'index'])->name('attend.index');
-    Route::post('/attendTable', [AttendanceController::class, 'showAttendance'])->name('attend.table');
+    Route::post('/attendTable', [AttendController::class, 'showAttendance'])->name('attend.table');
     Route::get('/timeTable', [ArkController::class, 'index'])->name('timetable.index');
     
 });
