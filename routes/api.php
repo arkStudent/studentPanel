@@ -18,5 +18,6 @@ Route::middleware(['web'])->group(function () {
     Route::post('/login', [ArkController::class, 'login'])->name('login');
     //Lubna called routes start
     Route::get('/attendForm', [AttendController::class, 'index'])->name('attend.index');
+    Route::post('/attendTable', [AttendanceController::class, 'showAttendance']);
     
 });
