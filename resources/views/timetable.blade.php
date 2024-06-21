@@ -1,7 +1,6 @@
 @extends('index')
 
 @section('content')
-
     <div class="container mt-4">
         <div class="row mb-3">
             <div class="col">
@@ -23,7 +22,7 @@
 
     <div class="container mt-3">
         <h3>Time Table</h3>
-        <table class="table table-bordered table-striped mt-3">
+        <table id="timetable" class="table table-bordered table-striped mt-3">
             <thead>
                 <tr>
                     <th>Sl No.</th>
@@ -34,17 +33,24 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($timetable as $time)
+                @forelse ($timetable as $time)
                     <tr>
-                        <td>{{ $loop->iteration }}</td> <!-- Incrementing serial number -->
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $time->period }}</td>
                         <td>{{ $time->day }}</td>
                         <td>{{ $time->sname }}</td>
                         <td>{{ $time->teacher_name }}</td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="5">No records found.</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
-        {{-- {{ $timetable->links() }} --}}
+
+        @if ($timetable->total() > 0)
+            {{ $timetable->links('vendor.pagination.default') }}
+        @endif
     </div>
 @endsection

@@ -7,7 +7,6 @@ Route::get('/', function () {
     return view('login');
 })->name('login');
 
-
 Route::get('/dashboard', function () {
     return view('index');
     // $value = session()->all();
@@ -15,7 +14,6 @@ Route::get('/dashboard', function () {
     // print_r($value);
     // echo "</pre>";
 })->name('index');
-
 
 Route::get('/logout', function (Request $request) {
     $request->session()->forget(['student_id', 'student_name']);

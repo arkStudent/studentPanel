@@ -28,7 +28,7 @@
                                     class="bi bi-arrow-right items"></i>Attendance</a></li>
                         <li><a href="{{ route('timetable.index') }}" target="_self"><i class="bi bi-arrow-right items"></i>Time
                                 Table</a></li>
-                        <li><a href="{{ route('signin') }}" target="_self"><i class="bi bi-arrow-right items"></i>Lesson
+                        <li><a href="{{ route('login') }}" target="_self"><i class="bi bi-arrow-right items"></i>Lesson
                                 Plan</a></li>
                         <li><a href="{{ route('login') }}" target="_self"><i
                                     class="bi bi-arrow-right items"></i>Calender of Event</a></li>

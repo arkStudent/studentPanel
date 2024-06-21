@@ -12,6 +12,11 @@ Route::get('/user', function (Request $request) {
 // Route::post('/login', [ArkController::class, 'login'])->name('login');
 Route::middleware(['web'])->group(function () {
     Route::post('/login', [ArkController::class, 'login'])->name('login');
+    Route::get('/logout', function (Request $request) {
+        $request->session()->forget(['student_id', 'student_name']);
+        $request->session()->flush();
+        return redirect()->route('login');
+    })->name('logout');
     Route::get('/attendForm', [AttendController::class, 'index'])->name('attend.index');
     Route::post('/attendTable', [AttendController::class, 'showAttendance'])->name('attend.table');
     Route::get('/timeTable', [ArkController::class, 'index'])->name('timetable.index');
