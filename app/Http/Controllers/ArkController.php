@@ -17,8 +17,8 @@ class ArkController extends Controller
         $timetable = DB::table('ark_timetable')
                     ->where('standard', $standard)
                     ->where('dv', $division)
-                    ->get();
-                    // ->paginate(10);
+                    // ->get();
+                    ->paginate(50);
 
         return view('timetable', compact('timetable'));
     }
