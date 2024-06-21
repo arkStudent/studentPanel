@@ -31,4 +31,8 @@ Route::get('/sigin', function () {
 })->name('signin');
 
 
+Route::get('/attendTable', function () {
+    return view('attendTable');
+})->name('attendTable');
+
 ?>
