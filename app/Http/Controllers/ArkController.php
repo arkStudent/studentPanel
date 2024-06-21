@@ -18,6 +18,7 @@ class ArkController extends Controller
                     ->where('standard', $standard)
                     ->where('dv', $division)
                     ->get();
+                    // ->paginate(10);
 
         return view('timetable', compact('timetable'));
     }

@@ -45,5 +45,6 @@
                 @endforeach
             </tbody>
         </table>
+        {{-- {{ $timetable->links() }} --}}
     </div>
 @endsection
