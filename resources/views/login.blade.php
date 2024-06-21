@@ -57,48 +57,44 @@
 </body>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var form = document.getElementById('loginFormElement');
+    document.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
+        var student_id = document.getElementById('student_id').value;
+        var password = document.getElementById('password').value;
 
-            var student_id = document.getElementById('student_id').value;
-            var password = document.getElementById('password').value;
+        // console.log('Payload:', {
+        //     student_id: student_id,
+        //     password: password
+        // });
 
-            console.log(student_id);
-            console.log(password);
-
-            fetch('/api/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
-                            .getAttribute('content')
-                    },
-                    body: JSON.stringify({
-                        student_id: student_id,
-                        password: password
-                    })
+        fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                        'content')
+                },
+                body: JSON.stringify({
+                    student_id: student_id,
+                    password: password
                 })
-                .then(response => {
-                    if (!response.ok) {
-                        return response.json().then(errorData => {
-                            throw errorData;
-                        });
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // console.log(data.user);
-                    window.location.href = "{{ route('index') }}";
-                })
-                .catch(error => {
-                    const errorMessage = Object.values(error).flat().join('\n');
-                    alert(errorMessage);
-                    // console.error('Error:', error);
-                });
-        });
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(errorData => {
+                        throw errorData;
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                window.location.href = "{{ route('index') }}";
+            })
+            .catch(error => {
+                const errorMessage = Object.values(error).flat().join('\n');
+                alert(errorMessage);
+            });
     });
 </script>
 
