@@ -29,10 +29,7 @@ class ArkController extends Controller
 
         if ($user) {
             if ($data['password'] === $user->password) {
-
                 session(['student_id' => $user->student_id, 'name' => $user->name]); 
-
-
                 // Retrieve additional data from ark_students table
                 $additionalData = DB::table('ark_students')
                     ->where('student_id', $data['student_id'])
