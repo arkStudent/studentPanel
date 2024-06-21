@@ -13,7 +13,7 @@
 
     <!-- CSRF Token Meta Tag -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+
     <!-- vendor css -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
@@ -31,10 +31,12 @@
                                 <h4 class="mb-3 f-w-400">login</h4>
                                 <hr>
                                 <div class="form-group mb-3">
-                                    <input type="text" class="form-control" id="student_id" name="student_id" placeholder="Student Id">
+                                    <input type="text" class="form-control" id="student_id" name="student_id"
+                                        placeholder="Student Id">
                                 </div>
                                 <div class="form-group mb-4">
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        placeholder="Password">
                                 </div>
                                 <button type="submit" class="btn btn-block btn-primary mb-4">login</button>
                                 <hr>
