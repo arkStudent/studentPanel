@@ -513,6 +513,7 @@ svg {
 }
 
 table {
+    font-size: 17px;
     border-collapse: collapse;
 }
 
@@ -600,6 +601,7 @@ button,
 [type="reset"],
 [type="submit"] {
     -webkit-appearance: button;
+    appearance: button;
 }
 
 button:not(:disabled),
@@ -628,6 +630,7 @@ input[type="time"],
 input[type="datetime-local"],
 input[type="month"] {
     -webkit-appearance: listbox;
+    appearance: listbox;
 }
 
 textarea {
@@ -666,6 +669,7 @@ progress {
 [type="search"] {
     outline-offset: -2px;
     -webkit-appearance: none;
+    appearance: none;
 }
 
 [type="search"]::-webkit-search-decoration {
@@ -10927,7 +10931,7 @@ a.text-dark:focus {
         page-break-after: avoid;
     }
 
-    @ page {
+    @page {
         size: a3;
     }
 
@@ -10993,7 +10997,7 @@ a.text-dark:focus {
     font-weight: normal !important;
     font-variant: normal !important;
     text-transform: none !important;
-    speak: none;
+    /* speak: none; */
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -11006,7 +11010,7 @@ a.text-dark:focus {
     font-weight: normal !important;
     font-variant: normal !important;
     text-transform: none !important;
-    speak: none;
+    /* speak: none; */
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -11064,18 +11068,18 @@ a.text-dark:focus {
     content: "\6d";
 }
 
-@font-face {
+/* @font-face {
     font-family: "feather";
-    src: url("../fonts/feather.eot?t=1501841394106");
+    /* src: url("../fonts/feather.eot?t=1501841394106"); */
     /* IE9*/
-    src: url("../fonts/feather.eot?t=1501841394106#iefix") format("embedded-opentype"), url("../fonts/feather.woff?t=1501841394106") format("woff"), url("../fonts/feather.ttf?t=1501841394106") format("truetype"), url("../fonts/feather.svg?t=1501841394106#feather") format("svg");
+    /* src: url("../fonts/feather.eot?t=1501841394106#iefix") format("embedded-opentype"), url("../fonts/feather.woff?t=1501841394106") format("woff"), url("../fonts/feather.ttf?t=1501841394106") format("truetype"), url("../fonts/feather.svg?t=1501841394106#feather") format("svg"); */
     /* iOS 4.1- */
-}
+/* }  */
 
 .feather {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'feather' !important;
-    speak: none;
+    /* speak: none; */
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -12207,21 +12211,25 @@ a.text-dark:focus {
 
 .fa-rotate-90 {
     -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
     transform: rotate(90deg);
 }
 
 .fa-rotate-180 {
     -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
     transform: rotate(180deg);
 }
 
 .fa-rotate-270 {
     -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
     transform: rotate(270deg);
 }
 
 .fa-flip-horizontal {
     -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
     transform: scaleX(-1);
 }
 
@@ -12232,6 +12240,7 @@ a.text-dark:focus {
 .fa-flip-horizontal.fa-flip-vertical,
 .fa-flip-vertical {
     -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
 }
 
 .fa-flip-horizontal.fa-flip-vertical {
@@ -17673,7 +17682,7 @@ a.text-dark:focus {
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-    @ font-face {
+    @font-face {
         font-family: "Flaticon";
         src: url("../fonts/Flaticon.svg#Flaticon") format("svg");
     }
@@ -17691,7 +17700,7 @@ a.text-dark:focus {
     text-transform: none;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-smoothing: antialiased;
+    /* font-smoothing: antialiased; */
 }
 
 .flaticon-shield:before {
@@ -17949,7 +17958,7 @@ a.text-dark:focus {
     right: 10px;
     top: 10px;
     display: inline-block;
-    float: right;
+    /* float: right; */
     padding: 0;
     position: absolute;
 }
@@ -21172,7 +21181,7 @@ pre[class*=language-]:before {
 }
 
 .pcoded-navbar .header-logo+.scroll-div {
-    float: left;
+    /* float: left; */
     display: inline-block;
 }
 
@@ -28795,7 +28804,7 @@ text.highcharts-drilldown-data-label {
 }
 
 #task-container li {
-    float: left;
+    /* float: left; */
     width: 49%;
     overflow: auto;
     height: auto;
@@ -28859,7 +28868,7 @@ text.highcharts-drilldown-data-label {
     border: 1px solid #e3e3e3;
     cursor: pointer;
     display: inline-block;
-    float: left;
+    /* float: left; */
     height: 24px;
     margin-right: 0.5em;
     position: relative;
@@ -28927,7 +28936,7 @@ text.highcharts-drilldown-data-label {
     border: 1px solid #e3e3e3;
     cursor: pointer;
     display: inline-block;
-    float: left;
+    /* float: left; */
     height: 24px;
     margin-right: 0.5em;
     position: relative;
