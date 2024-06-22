@@ -24,49 +24,44 @@ class ArkController extends Controller
     }
 
     public function login(Request $request)
-{
-    $validatedData = Validator::make($request->all(), [
-        'student_id' => 'required',
-        'password' => 'required'
-    ]);
+    {
+        $validatedData = Validator::make($request->all(), [
+            'student_id' => 'required',
+            'password' => 'required'
+        ]);
 
-    if ($validatedData->fails()) {
-        Log::error('Validation errors:', $validatedData->errors()->all());
-        return response()->json($validatedData->errors(), 422);
-    }
+        if ($validatedData->fails()) {
+            Log::error('Validation errors:', $validatedData->errors()->all());
+            return response()->json($validatedData->errors(), 422);
+        }
 
-    $data = $validatedData->validated();
+        $data = $validatedData->validated();
 
-    try {
         $user = DB::table('ark_student_info')
             ->where('student_id', $data['student_id'])
             ->orWhere('sts_id', $data['student_id'])
             ->first();
 
-        if (!$user) {
+        if ($user) {
+            if ($data['password'] === $user->password) {
+                session(['student_id' => $user->student_id, 'name' => $user->name]);
+
+                $additionalData = DB::table('ark_students')
+                    ->where('student_id', $data['student_id'])
+                    ->first();
+
+                session([
+                    'std' => $additionalData ? $additionalData->class : null,
+                    'dv' => $additionalData ? $additionalData->division : null
+                ]);
+
+                return response()->json(['message' => 'Logged in successfully', 'user' => $user], 201);
+            } else{
+                return response()->json(['error' => 'Incorrect password'], 422);
+            }
+        } else{
             return response()->json(['error' => 'User not found with provided id'], 422);
         }
-
-        if ($data['password'] !== $user->password) {
-            return response()->json(['error' => 'Incorrect password'], 422);
-        }
-
-        session(['student_id' => $user->student_id, 'name' => $user->name]);
-
-        $additionalData = DB::table('ark_students')
-            ->where('student_id', $data['student_id'])
-            ->first();
-
-        session([
-            'std' => $additionalData ? $additionalData->class : null,
-            'dv' => $additionalData ? $additionalData->division : null
-        ]);
-
-        return response()->json(['message' => 'Logged in successfully', 'user' => $user], 201);
-    } catch (Exception $e) {
-        Log::error('Login error: ' . $e->getMessage());
-        return response()->json(['error' => 'Internal Server Error'], 500);
     }
-}
 
 }
