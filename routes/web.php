@@ -31,6 +31,6 @@ Route::get('/sigin', function () {
 
 Route::get('/attendTable', function () {
     return view('attendTable');
-})->name('attendTable');
+})->name('show.table');
 
 ?>
