@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\ArkController;
 
 Route::get('/', function () {
     return view('login');
@@ -15,18 +16,16 @@ Route::get('/dashboard', function () {
     // echo "</pre>";
 })->name('index');
 
-Route::get('/logout', function (Request $request) {
-    $request->session()->forget(['student_id', 'student_name']);
-    return redirect('/');
-})->name('logout');
+Route::get('/change_password', function () {
+    return view('changePass');
+})->name('change');
 
-Route::get('/sigin', function () {
-    // return view('signup');
-    $value = session()->get('student_id');
-    echo "<pre>";
-    print_r($value);
-    echo "</pre>";
-})->name('signin');
+Route::get('/forgot_password', function () {
+    return view('forgotPass');
+})->name('forgot');
 
+Route::post('/change_password', [ArkController::class, 'changePass'])->name('changePass');
+
+Route::post('/forgot_password', [ArkController::class, 'forgotPass'])->name('forgotPass');
 
 ?>

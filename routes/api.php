@@ -21,7 +21,7 @@ Route::middleware(['web'])->group(function () {
     });
 
     // Routes handled by AttendController
-    Route::controller(ArkController::class)->group(function () {
+    Route::controller(AttendController::class)->group(function () {
         Route::get('/attendForm', 'index')->name('attend.index');
         Route::post('/attendTable','submitAttendance')->name('attend.table');
     });

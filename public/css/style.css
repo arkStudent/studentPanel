@@ -20715,6 +20715,9 @@ pre[class*=language-]:before {
     font-size: 14px; /* Adjust font size */
 }
 
+.top-content{
+    margin-left: 20%;
+}
 
 /* end our css */
 
